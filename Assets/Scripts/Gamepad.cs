@@ -3,7 +3,11 @@
 public class Gamepad : MonoBehaviour {
   public Transform handAnchor;
   public AudioClip gunshot;
+  public GameObject beam;
   public GameObject explosion;
+  public float beamTime = 0.25f;
+  public float beamLength = 20f;
+  public float explosionTime = 1f;
 
   private Movement movement;
   private AudioSource audioSource;
@@ -34,20 +38,38 @@ public class Gamepad : MonoBehaviour {
       movement.HideTeleports();
     }
 
+    if (Input.GetKeyDown (KeyCode.R)) {
+      movement.PreviousTeleport();
+    }
+
     if (Input.GetKeyDown (KeyCode.T)) {
       movement.NextTeleport();
     }
   }
 
   void FirePrimary() {
+
+    // Play sound effect
+    audioSource.PlayOneShot(gunshot);
+
+    // Show laser beam
+    var lineRenderer = Instantiate(beam).GetComponent<LineRenderer>();
+    lineRenderer.SetPosition(0, handAnchor.position);
+    Destroy(lineRenderer.gameObject, beamTime);
+
+    // Perform ray trace
     RaycastHit hit;
 
     if (Physics.Raycast(handAnchor.position, handAnchor.forward, out hit)) {
-      Instantiate(explosion, hit.point, Quaternion.Euler(hit.normal));
-      audioSource.PlayOneShot(gunshot);
+      var explosionInstance = Instantiate(explosion, hit.point, Quaternion.Euler(hit.normal));
+      Object.Destroy(explosionInstance, 1f);
+
+      lineRenderer.SetPosition(1, hit.point);
 
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();
+    } else {
+      lineRenderer.SetPosition(1, handAnchor.forward * beamLength);
     }
   }
 }

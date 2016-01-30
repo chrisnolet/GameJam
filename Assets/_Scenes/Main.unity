@@ -1192,6 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handAnchor: {fileID: 1276882999}
   gunshot: {fileID: 8300000, guid: 67f76143878f743b1b9edc979752979a, type: 3}
+  beam: {fileID: 147558, guid: 5b67edc79a15aba42b7c90d403cc1b95, type: 2}
   explosion: {fileID: 127000, guid: ff827a193ecfc4f47a116927a87cd51c, type: 2}
 --- !u!114 &1184557608
 MonoBehaviour:
