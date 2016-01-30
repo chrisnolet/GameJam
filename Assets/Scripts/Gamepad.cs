@@ -12,7 +12,10 @@ public class Gamepad : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetButton("Fire1")) {
+		if (Input.GetKeyDown (KeyCode.T)) {
+			player.position = GameObject.Find("Cube").transform.position;
+		}
+		if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetButton("Fire1")) {
       FirePrimary();
     }
   }
