@@ -3,6 +3,18 @@ Peanut Butter and Game Jam
 
 Developed by Team Awesome (c) 2016
 
+- [x] Xbox controls
+- [x] VR reticle/targeting
+- [x] Shooting
+- [x] Damage
+- [x] Enemy HP
+- [ ] Teleportation
+- [ ] Sounds
+- [ ] Arena
+- [ ] Scoreboard
+- [ ] Respawn
+- [ ] AddDamage
+
 
 Important Notices
 ---
