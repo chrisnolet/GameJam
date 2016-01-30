@@ -9,6 +9,7 @@ public class BaseHealth : MonoBehaviour {
 	const int healthRegenerationPerSecond = 1;
 	const int healthDecreasePerSecondWhenBleeding = 1;
 	const float maxColorAlpha = 0.30f;
+	const float weaponDamage = 30;
 
 	//Variables
 	public float currentHealth;
@@ -25,7 +26,13 @@ public class BaseHealth : MonoBehaviour {
 		
 	}
 
-	void regenerateOrBleed() {
+	// Call this when someone gets hit
+	public void gotShot () {
+		currentHealth -= weaponDamage;
+		updateDamageOverlay ();
+	}
+
+	void regenerateOrBleed () {
 		if (currentHealth == maxHealth) {
 			return;
 		}
@@ -38,10 +45,10 @@ public class BaseHealth : MonoBehaviour {
 			currentHealth += healthRegenerationPerSecond;
 		}
 
-		updateColor ();
+		updateDamageOverlay ();
 	}
 
-	void updateColor() {
+	void updateDamageOverlay() {
 		Color color = Color.red;
 		// Magic formula
 		float alphaToUse = maxColorAlpha * (maxHealth/maxHealth - currentHealth/maxHealth);
