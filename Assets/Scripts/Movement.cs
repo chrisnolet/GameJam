@@ -58,7 +58,10 @@ public class Movement : MonoBehaviour {
 
   public void PreviousTeleport() {
     teleportIndex--;
-    teleportIndex %= teleports.Length;
+
+    if (teleportIndex < 0) {
+      teleportIndex += teleports.Length;
+    }
 
     player.position = teleports[teleportIndex].transform.position;
   }
