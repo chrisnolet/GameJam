@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1184557606}
   - 114: {fileID: 1184557607}
+  - 114: {fileID: 1184557610}
   - 114: {fileID: 1184557608}
   - 82: {fileID: 1184557609}
   m_Layer: 0
@@ -637,7 +638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aae146ffed644786ad42f70cf81e8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 507635263}
   handAnchor: {fileID: 1276882999}
   gunshot: {fileID: 8300000, guid: 67f76143878f743b1b9edc979752979a, type: 3}
   explosion: {fileID: 127000, guid: ff827a193ecfc4f47a116927a87cd51c, type: 2}
@@ -728,6 +728,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1184557610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184557605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918b070690f3e48ee8d71dc87a693114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 507635263}
+  teleports: []
 --- !u!1001 &1276882998
 Prefab:
   m_ObjectHideFlags: 0
