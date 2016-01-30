@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.Networking;
 
-public class InteractiveItem : MonoBehaviour {
+public class InteractiveItem : NetworkBehaviour {
   public event Action<RaycastHit> ReticleEnter;
   public event Action<RaycastHit> ReticleOver;
   public event Action ReticleExit;
