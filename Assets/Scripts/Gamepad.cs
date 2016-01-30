@@ -7,9 +7,13 @@ public class Gamepad : MonoBehaviour {
   public GameObject explosion;
 
   private AudioSource audioSource;
+  private Teleport[] teleports;
+  private float maxDistance;
 
   void Awake() {
     audioSource = GetComponent<AudioSource>();
+    teleports = FindObjectsOfType<Teleport>();
+    maxDistance = FindObjectOfType<Reticle>().maxDistance;
   }
 
   // Use this for initialization
@@ -19,8 +23,18 @@ public class Gamepad : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
+
+    // Note: References to Fire1 are only for testing without an Xbox controller
     if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetButtonDown("Fire1")) {
       FirePrimary();
+    }
+
+    if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown("Fire1")) {
+      ShowTeleports();
+    }
+
+    if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
+      HideTeleports();
     }
 
     if (Input.GetKeyDown (KeyCode.T)) {
@@ -37,6 +51,20 @@ public class Gamepad : MonoBehaviour {
 
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();
+    }
+  }
+
+  void HideTeleports() {
+    foreach (Teleport teleport in teleports) {
+      teleport.gameObject.GetComponent<Renderer>().enabled = false;
+    }
+  }
+
+  void ShowTeleports() {
+    foreach (Teleport teleport in teleports) {
+      if (Vector3.Distance(player.position, teleport.transform.position) < maxDistance) {
+        teleport.gameObject.GetComponent<Renderer>().enabled = true;
+      }
     }
   }
 }

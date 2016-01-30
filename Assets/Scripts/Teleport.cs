@@ -1,34 +1,58 @@
-// Teleport.cs by DaveA
-
-// Drop this on an OVRPlayerController, or not. If not, drag the OVRPlayerController onto this in the Inspector. Or not.
-// Place 'target' transforms in scene where you want to appear. Put them into 'targets' array.
-// Hitting the 'activate key' will jump you there, with target rotation too.
 using UnityEngine;
-using System.Collections.Generic;
 
-public class Teleport : MonoBehaviour
-{
-   public KeyCode activateKey = KeyCode.T;
-   public Transform[] targets;
-   public Transform player;
-   public int curTarget = 0;
-   public OVRPlayerController ovrPlayer;
+public class Teleport : MonoBehaviour {
+  public Color selectedColor;
+  public Color inactiveColor;
 
-   void Start ()
-   {
-      if (ovrPlayer == null)
-         ovrPlayer = GetComponent<OVRPlayerController>();
-      if (ovrPlayer == null)
-         ovrPlayer = Object.FindObjectOfType<OVRPlayerController>();
-   }
+  private new Renderer renderer;
+  private GameObject player;
 
-   void Update ()
-   {
-      if (Input.GetKeyDown(activateKey))
-      {
-         player.position = targets[curTarget].position;
-         ovrPlayer.SetYRotation (targets[curTarget].eulerAngles.y -90f);
-         curTarget = ++curTarget % targets.Length;
-      }
-   }
+  void OnEnable() {
+    var interactiveItem = GetComponent<InteractiveItem>();
+
+    interactiveItem.ReticleEnter += OnReticleEnter;
+    interactiveItem.ReticleExit += OnReticleExit;
+    interactiveItem.ReticleUp += OnReticleUp;
+  }
+
+  void OnDisable() {
+    InteractiveItem interactiveItem = GetComponent<InteractiveItem>();
+
+    interactiveItem.ReticleEnter -= OnReticleEnter;
+    interactiveItem.ReticleExit -= OnReticleExit;
+    interactiveItem.ReticleUp -= OnReticleUp;
+  }
+
+  void Awake() {
+    renderer = GetComponent<Renderer>();
+    player = GameObject.FindGameObjectWithTag("Player");
+  }
+
+  // Use this for initialization
+  void Start() {
+
+    // Prevent the player from bouncing off the teleport
+    Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+  }
+
+  // Update is called once per frame
+  void Update() {
+
+  }
+
+  void OnReticleEnter(RaycastHit hit) {
+    renderer.material.color = selectedColor;
+  }
+
+  void OnReticleExit() {
+    renderer.material.color = inactiveColor;
+  }
+
+  void OnReticleUp(RaycastHit hit, OVRInput.Button button, OVRInput.Controller controller) {
+    switch (button) {
+      case OVRInput.Button.One:
+        player.transform.position = hit.collider.transform.position;
+        break;
+    }
+  }
 }

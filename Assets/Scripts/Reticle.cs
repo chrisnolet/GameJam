@@ -74,6 +74,15 @@ public class Reticle : MonoBehaviour {
           interactiveItem.OnReticleUp(hit, button, controller);
         }
       }
+
+      // Note: This is only for testing without an Xbox controller
+      if (Input.GetButtonDown("Fire1")) {
+        interactiveItem.OnReticleDown(hit, OVRInput.Button.One, OVRInput.GetActiveController());
+      }
+
+      if (Input.GetButtonUp("Fire1")) {
+        interactiveItem.OnReticleUp(hit, OVRInput.Button.One, OVRInput.GetActiveController());
+      }
     }
   }
 }
