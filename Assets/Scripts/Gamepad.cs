@@ -22,6 +22,10 @@ public class Gamepad : MonoBehaviour {
     if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetButtonDown("Fire1")) {
       FirePrimary();
     }
+
+    if (Input.GetKeyDown (KeyCode.T)) {
+      player.position = GameObject.Find("Cube").transform.position;
+    }
   }
 
   void FirePrimary() {
