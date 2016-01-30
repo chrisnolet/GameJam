@@ -7,13 +7,20 @@ public class Gamepad : MonoBehaviour {
   public GameObject explosion;
 
   private AudioSource audioSource;
-  private Teleport[] teleports;
+  private Renderer[] teleports;
   private float maxDistance;
 
   void Awake() {
     audioSource = GetComponent<AudioSource>();
-    teleports = FindObjectsOfType<Teleport>();
     maxDistance = FindObjectOfType<Reticle>().maxDistance;
+
+    // Cache the teleport renderers
+    var root = FindObjectsOfType<Teleport>();
+    teleports = new Renderer[root.Length];
+
+    for (int n = 0; n < root.Length; n++) {
+      teleports[n] = root[n].GetComponent<Renderer>();
+    }
   }
 
   // Use this for initialization
@@ -55,15 +62,15 @@ public class Gamepad : MonoBehaviour {
   }
 
   void HideTeleports() {
-    foreach (Teleport teleport in teleports) {
-      teleport.gameObject.GetComponent<Renderer>().enabled = false;
+    foreach (Renderer teleport in teleports) {
+      teleport.enabled = false;
     }
   }
 
   void ShowTeleports() {
-    foreach (Teleport teleport in teleports) {
+    foreach (Renderer teleport in teleports) {
       if (Vector3.Distance(player.position, teleport.transform.position) < maxDistance) {
-        teleport.gameObject.GetComponent<Renderer>().enabled = true;
+        teleport.enabled = true;
       }
     }
   }
