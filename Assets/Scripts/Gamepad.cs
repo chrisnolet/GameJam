@@ -1,26 +1,16 @@
 ﻿using UnityEngine;
 
 public class Gamepad : MonoBehaviour {
-  public Transform player;
   public Transform handAnchor;
   public AudioClip gunshot;
   public GameObject explosion;
 
+  private GameController gameController;
   private AudioSource audioSource;
-  private Renderer[] teleports;
-  private float maxDistance;
 
   void Awake() {
+    gameController = GetComponent<GameController>();
     audioSource = GetComponent<AudioSource>();
-    maxDistance = FindObjectOfType<Reticle>().maxDistance;
-
-    // Cache the teleport renderers
-    var root = FindObjectsOfType<Teleport>();
-    teleports = new Renderer[root.Length];
-
-    for (int n = 0; n < root.Length; n++) {
-      teleports[n] = root[n].GetComponent<Renderer>();
-    }
   }
 
   // Use this for initialization
@@ -37,15 +27,15 @@ public class Gamepad : MonoBehaviour {
     }
 
     if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown("Fire1")) {
-      ShowTeleports();
+      gameController.ShowTeleports();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
-      HideTeleports();
+      gameController.HideTeleports();
     }
 
     if (Input.GetKeyDown (KeyCode.T)) {
-      player.position = GameObject.Find("Cube").transform.position;
+      gameController.player.position = GameObject.Find("Cube").transform.position;
     }
   }
 
@@ -58,20 +48,6 @@ public class Gamepad : MonoBehaviour {
 
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();
-    }
-  }
-
-  void HideTeleports() {
-    foreach (Renderer teleport in teleports) {
-      teleport.enabled = false;
-    }
-  }
-
-  void ShowTeleports() {
-    foreach (Renderer teleport in teleports) {
-      if (Vector3.Distance(player.position, teleport.transform.position) < maxDistance) {
-        teleport.enabled = true;
-      }
     }
   }
 }
