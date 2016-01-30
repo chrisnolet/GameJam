@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour {
 
 	//Constants
 	const float maxHealth = 100;
