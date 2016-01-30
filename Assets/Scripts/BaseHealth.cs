@@ -28,13 +28,25 @@ public class BaseHealth : MonoBehaviour {
 
 	// Call this when someone gets hit
 	public void gotShot () {
+		print("i got shot!");
 		currentHealth -= weaponDamage;
+		if (currentHealth < 0) {
+			died ();
+		}
 		updateDamageOverlay ();
+	}
+		
+	public void died() {
+		// Call stuff when the player died
+		print("i died!");
 	}
 
 	void regenerateOrBleed () {
 		if (currentHealth == maxHealth) {
 			return;
+		}
+		if (currentHealth < 0) {
+			died ();
 		}
 		
 		if (currentHealth < bleedingStartHealth) {
