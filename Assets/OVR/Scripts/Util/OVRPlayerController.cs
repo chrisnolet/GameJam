@@ -453,10 +453,5 @@ public class OVRPlayerController : MonoBehaviour
 			transform.rotation = Quaternion.Euler(euler);
 		}
 	}
-
-	// Fix the SnapRotation for the player to keep them facing in a constant direction.
-	// Needed for TeleportToLocation.cs script. source: https://forums.oculus.com/viewtopic.php?t=5940
-	public void SetYRotation (float y) {
-		InitialYRotation = y;
-	}
 }
+
