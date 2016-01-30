@@ -34,9 +34,14 @@ public class BaseHealth : MonoBehaviour {
 	// Call this when someone gets hit
 	public void gotShot () {
 		print("i got shot!");
-		currentHealth -= weaponDamage;
-		if (currentHealth < 0) {
-			died ();
+		reduceHealth (weaponDamage);
+	}
+
+	private void reduceHealth(float damage) {
+		if (currentHealth - damage <= 0) {
+			died();
+		} else {
+			currentHealth -= damage;
 		}
 		updateDamageOverlay ();
 	}
@@ -50,13 +55,10 @@ public class BaseHealth : MonoBehaviour {
 		if (currentHealth == maxHealth) {
 			return;
 		}
-		if (currentHealth < 0) {
-			died ();
-		}
 		
 		if (currentHealth < bleedingStartHealth) {
 			//Lose hp if person is dying
-			currentHealth -= healthDecreasePerSecondWhenBleeding;
+			reduceHealth(healthDecreasePerSecondWhenBleeding);
 		} else {
 			//Gain hp if person is healing
 			currentHealth += healthRegenerationPerSecond;
