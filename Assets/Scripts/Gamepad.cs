@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class Gamepad : MonoBehaviour {
-
+	public Transform playerTransform;
   // Use this for initialization
   void Start () {
 
