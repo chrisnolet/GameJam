@@ -6,10 +6,10 @@ public class Gamepad : MonoBehaviour {
   public AudioClip gunshot;
   public GameObject explosion;
 
-  private AudioSource audio;
+  private AudioSource audioSource;
 
   void Awake() {
-    audio = GetComponent<AudioSource>();
+    audioSource = GetComponent<AudioSource>();
   }
 
   // Use this for initialization
@@ -33,7 +33,7 @@ public class Gamepad : MonoBehaviour {
 
     if (Physics.Raycast(handAnchor.position, handAnchor.forward, out hit)) {
       Instantiate(explosion, hit.point, Quaternion.Euler(hit.normal));
-      audio.PlayOneShot(gunshot);
+      audioSource.PlayOneShot(gunshot);
 
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();

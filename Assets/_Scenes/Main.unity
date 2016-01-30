@@ -519,7 +519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1184557607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ MonoBehaviour:
   player: {fileID: 507635263}
   handAnchor: {fileID: 1276882999}
   gunshot: {fileID: 8300000, guid: 67f76143878f743b1b9edc979752979a, type: 3}
-  explosion: {fileID: 127000, guid: ff827a193ecfc4f47a116927a87cd51c, type: 2}
+  explosion: {fileID: 0}
 --- !u!114 &1184557608
 MonoBehaviour:
   m_ObjectHideFlags: 0
