@@ -8,12 +8,17 @@ public class BaseHealth : MonoBehaviour {
 	const int bleedingStartHealth = 20;
 	const int healthRegenerationPerSecond = 1;
 	const int healthDecreasePerSecondWhenBleeding = 1;
-	const float maxColorAlpha = 0.30f;
+	const float maxColorAlpha = 0.2f;
+	const float minBloodColorAlpha = 0.5f;
+	const float maxBloodColorAlpha = 1f;
 	const float weaponDamage = 30;
 
 	//Variables
 	public float currentHealth;
 	public Image image;
+	public Image blood1;
+	public Image blood2;
+	public Image blood3;
 
 	// Use this for initialization
 	void Start () {
@@ -28,8 +33,22 @@ public class BaseHealth : MonoBehaviour {
 
 	// Call this when someone gets hit
 	public void gotShot () {
-		currentHealth -= weaponDamage;
+		print("i got shot!");
+		reduceHealth (weaponDamage);
+	}
+
+	private void reduceHealth(float damage) {
+		if (currentHealth - damage <= 0) {
+			died();
+		} else {
+			currentHealth -= damage;
+		}
 		updateDamageOverlay ();
+	}
+		
+	public void died() {
+		// Call stuff when the player died
+		print("i died!");
 	}
 
 	void regenerateOrBleed () {
@@ -39,7 +58,7 @@ public class BaseHealth : MonoBehaviour {
 		
 		if (currentHealth < bleedingStartHealth) {
 			//Lose hp if person is dying
-			currentHealth -= healthDecreasePerSecondWhenBleeding;
+			reduceHealth(healthDecreasePerSecondWhenBleeding);
 		} else {
 			//Gain hp if person is healing
 			currentHealth += healthRegenerationPerSecond;
@@ -54,6 +73,55 @@ public class BaseHealth : MonoBehaviour {
 		float alphaToUse = maxColorAlpha * (maxHealth/maxHealth - currentHealth/maxHealth);
 		color.a = alphaToUse;
 		image.color = color;
+
+
+		if (currentHealth < 25) {
+			blood1.color = getBloodColor();
+			blood2.color = getBloodColor();
+			blood3.color = getBloodColor();
+		} else if (currentHealth < 50) {
+			blood1.color = getBloodColor();
+			blood3.color = getBloodColor();
+			resetColor (false, true, false);
+		} else if (currentHealth < 75) {
+			blood1.color = getBloodColor();
+			resetColor (false, true, true);
+		} else {
+			resetColor (true, true, true);
+		}
 	}
 
+//	Color calculateBloodColor(float startingHealth) {
+//		var alpha = 1 - (100 * currentHealth) / (startingHealth * maxHealth);
+//		Color color = blood1.color;
+//		print (alpha);
+//		color.a = Mathf.Clamp (alpha, 0, 1);
+//		return color;
+//	}
+
+	Color getBloodColor() {
+		Color bloodColor = blood1.color;
+		float bloodAlphaToUse = (maxBloodColorAlpha / minBloodColorAlpha) * (maxHealth / maxHealth - currentHealth / maxHealth);
+		bloodColor.a = bloodAlphaToUse;
+		return bloodColor;
+	}
+
+	void resetColor(bool b1, bool b2, bool b3) {
+		if (b1) {
+			Color blood1Color = blood1.color;
+			blood1Color.a = 0;
+			blood1.color = blood1Color;
+		}
+		if (b2) {
+			Color blood2Color = blood2.color;
+			blood2Color.a = 0;
+			blood2.color = blood2Color;
+		}
+		if (b3) {
+			Color blood3Color = blood3.color;
+			blood3Color.a = 0;
+			blood3.color = blood3Color;
+		}
+	}
 }
+
