@@ -2,6 +2,7 @@
 
 public class Gamepad : MonoBehaviour {
   public Transform player;
+  public Transform handAnchor;
   public GameObject explosion;
 
   // Use this for initialization
@@ -11,7 +12,10 @@ public class Gamepad : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) {
+		if (Input.GetKeyDown (KeyCode.T)) {
+			player.position = GameObject.Find("Cube").transform.position;
+		}
+		if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetButton("Fire1")) {
       FirePrimary();
     }
   }
@@ -19,7 +23,7 @@ public class Gamepad : MonoBehaviour {
   void FirePrimary() {
     RaycastHit hit;
 
-    if (Physics.Raycast(player.position, player.forward, out hit)) {
+    if (Physics.Raycast(handAnchor.position, handAnchor.forward, out hit)) {
       transform.position = hit.point;
       Instantiate(explosion, hit.point, Quaternion.Euler(hit.normal));
     }
