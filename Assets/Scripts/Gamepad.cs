@@ -5,11 +5,11 @@ public class Gamepad : MonoBehaviour {
   public AudioClip gunshot;
   public GameObject explosion;
 
-  private GameController gameController;
+  private Movement movement;
   private AudioSource audioSource;
 
   void Awake() {
-    gameController = GetComponent<GameController>();
+    movement = GetComponent<Movement>();
     audioSource = GetComponent<AudioSource>();
   }
 
@@ -27,15 +27,15 @@ public class Gamepad : MonoBehaviour {
     }
 
     if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown("Fire1")) {
-      gameController.ShowTeleports();
+      movement.ShowTeleports();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
-      gameController.HideTeleports();
+      movement.HideTeleports();
     }
 
     if (Input.GetKeyDown (KeyCode.T)) {
-      gameController.player.position = GameObject.Find("Cube").transform.position;
+      movement.NextTeleport();
     }
   }
 
