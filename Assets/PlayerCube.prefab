@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2360420}
   - 114: {fileID: 11445472}
   - 114: {fileID: 11458178}
+  - 114: {fileID: 11458876}
   m_Layer: 0
   m_Name: PlayerCube
   m_TagString: Untagged
@@ -120,6 +121,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01b942ad4d6e42b4a82950256062a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11458876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
