@@ -1,0 +1,12 @@
+{
+  "folders":
+  [
+    {
+      "file_exclude_patterns": [
+        "*.meta"
+      ],
+      "path": "Assets/Scripts"
+    }
+  ],
+  "solution_file": "PVP.sln"
+ }
