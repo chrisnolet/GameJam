@@ -9,6 +9,11 @@ public class InteractiveItem : NetworkBehaviour {
   public event Action<RaycastHit, OVRInput.Button, OVRInput.Controller> ReticleDown;
   public event Action<RaycastHit, OVRInput.Button, OVRInput.Controller> ReticleUp;
 
+  public override void OnStartLocalPlayer()
+	{
+		GetComponent<MeshRenderer>().material.color = Color.red;
+	}
+
   public void OnReticleEnter(RaycastHit hit) {
     if (ReticleEnter != null) {
       ReticleEnter(hit);
