@@ -26111,6 +26111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1272232227}
+  sound: {fileID: 8300000, guid: 025aa80ce83394dbb984ac462d965da6, type: 3}
 --- !u!114 &1272232227
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class TeleportEffects : MonoBehaviour {
 
 	public Image image;
+	public AudioClip sound;
 	bool fadeInProgress = false;
 	bool fadingOut = false;
 	float fadeSpeed = 0.2f;
