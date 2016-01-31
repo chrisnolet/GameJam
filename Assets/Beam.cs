@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class Beam : MonoBehaviour {
+public class Beam : NetworkBehaviour {
 
   [SyncVar]
   public Vector3 startPoint;
