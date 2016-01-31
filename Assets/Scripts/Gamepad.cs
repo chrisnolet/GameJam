@@ -26,7 +26,7 @@ public class Gamepad : MonoBehaviour {
   void Update() {
 
     // Note: References to Fire1 are only for testing without an Xbox controller
-    if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetButtonDown("Fire1")) {
+    if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown("Fire1")) {
       FirePrimary();
     }
 
@@ -37,12 +37,20 @@ public class Gamepad : MonoBehaviour {
     if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
       movement.HideTeleports();
     }
+    
+    if (Input.GetKeyDown (KeyCode.P)) {
+      movement.PreviousRing();
+    }
 
-    if (Input.GetKeyDown (KeyCode.R)) {
+    if (Input.GetKeyDown (KeyCode.N)) {
+      movement.NextRing();
+    }
+
+    if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)) {
       movement.PreviousTeleport();
     }
 
-    if (Input.GetKeyDown (KeyCode.T)) {
+    if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)) {
       movement.NextTeleport();
     }
   }
