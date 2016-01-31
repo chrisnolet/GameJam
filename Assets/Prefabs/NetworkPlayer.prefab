@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beam: {fileID: 164790, guid: 5b67edc79a15aba42b7c90d403cc1b95, type: 2}
+  impact: {fileID: 127000, guid: ff827a193ecfc4f47a116927a87cd51c, type: 2}
 --- !u!114 &11432554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +174,10 @@ Prefab:
       propertyPath: beam
       value: 
       objectReference: {fileID: 164790, guid: 5b67edc79a15aba42b7c90d403cc1b95, type: 2}
+    - target: {fileID: 0}
+      propertyPath: impact
+      value: 
+      objectReference: {fileID: 127000, guid: ff827a193ecfc4f47a116927a87cd51c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125172}
