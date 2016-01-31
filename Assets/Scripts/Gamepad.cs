@@ -62,7 +62,7 @@ public class Gamepad : MonoBehaviour {
   }
 
 	private void executeTeleportEffects() {
-		GameObject go = GameObject.Find("somegameobjectname");
+		GameObject go = GameObject.Find("Teleport Overlay");
 		TeleportEffects other = (TeleportEffects) go.GetComponent(typeof(TeleportEffects));
 		other.fadeInOut ();
 	}
