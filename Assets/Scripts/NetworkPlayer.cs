@@ -10,11 +10,10 @@ public class NetworkPlayer : NetworkBehaviour {
 
   // Use this for initialization
   void Start() {
-    Debug.Log(isLocalPlayer);
-
     if (isLocalPlayer) {
       transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
-      Debug.Log( GameObject.FindGameObjectWithTag("Player"));
+      transform.localPosition = Vector3.zero;
+
       GetComponent<Renderer>().enabled = false;
     }
   }
