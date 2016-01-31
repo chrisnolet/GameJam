@@ -26,11 +26,14 @@ public class NetworkPlayer : NetworkBehaviour {
   }
 
   [Command]
-  public void CmdCreateBeam(Vector3 startPoint, Vector3 endPoint, Quaternion rotation) {
+  public void CmdCreateBeam(Vector3 startPoint, Vector3 endPoint) {
     var beamInstance = Instantiate(beam);
 
     beamInstance.transform.position = startPoint;
     beamInstance.transform.localScale = new Vector3(1, 1, 1);
+
+    // Quaternion rotation = Quaternion.LookRotation(endPoint - startPoint);
+
     // beamInstance.transform.position = (startPoint + endPoint) * 0.5f;
     // beamInstance.transform.rotation = rotation * Quaternion.Euler(90, 0, 0);
 

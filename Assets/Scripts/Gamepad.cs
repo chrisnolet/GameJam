@@ -91,6 +91,6 @@ public class Gamepad : MonoBehaviour {
       networkPlayer = player.GetComponentInChildren<NetworkPlayer>();
     }
 
-    networkPlayer.CmdCreateBeam(handAnchor.position, endPoint, handAnchor.rotation);
+    networkPlayer.CmdCreateBeam(handAnchor.position, endPoint);
   }
 }
