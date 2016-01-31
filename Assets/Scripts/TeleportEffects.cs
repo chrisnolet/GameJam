@@ -8,6 +8,7 @@ public class TeleportEffects : MonoBehaviour {
 	bool fadeInProgress = false;
 	bool fadingOut = false;
 	float fadeSpeed = 0.2f;
+	public AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class TeleportEffects : MonoBehaviour {
 		print ("fade out activated");
 		fadeInProgress = true;
 		fadingOut = true;
+		audioSource.PlayOneShot (sound);
 	}
 
 	private void fadeUpdate() {
