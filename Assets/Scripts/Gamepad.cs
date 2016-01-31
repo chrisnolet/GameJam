@@ -38,20 +38,22 @@ public class Gamepad : MonoBehaviour {
       movement.HideTeleports();
     }
 
-    if (OVRInput.GetUp(OVRInput.Button.Two)) {
+    if (OVRInput.GetUp(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.S)) {
       movement.PreviousRing();
     }
 
-    if (OVRInput.GetUp(OVRInput.Button.Four)) {
+    if (OVRInput.GetUp(OVRInput.Button.Four) || Input.GetKeyDown(KeyCode.W)) {
       movement.NextRing();
     }
 
-    if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)) {
-      movement.PreviousTeleport();
+    if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)
+        || Input.GetKeyDown(KeyCode.D)) {
+      movement.RightTeleport();
     }
 
-    if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)) {
-      movement.NextTeleport();
+    if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)
+      || Input.GetKeyDown(KeyCode.A)) {
+      movement.LeftTeleport();
     }
   }
 
