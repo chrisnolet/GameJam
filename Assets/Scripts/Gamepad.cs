@@ -39,23 +39,33 @@ public class Gamepad : MonoBehaviour {
     }
 
     if (OVRInput.GetUp(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.S)) {
+	  executeTeleportEffects ();
       movement.PreviousRing();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.Four) || Input.GetKeyDown(KeyCode.W)) {
+	  executeTeleportEffects ();
       movement.NextRing();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)
         || Input.GetKeyDown(KeyCode.D)) {
+	  executeTeleportEffects ();
       movement.RightTeleport();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)
       || Input.GetKeyDown(KeyCode.A)) {
+	  executeTeleportEffects ();
       movement.LeftTeleport();
     }
   }
+
+	private void executeTeleportEffects() {
+		GameObject go = GameObject.Find("somegameobjectname");
+		TeleportEffects other = (TeleportEffects) go.GetComponent(typeof(TeleportEffects));
+		other.fadeInOut ();
+	}
 
   void FirePrimary() {
 

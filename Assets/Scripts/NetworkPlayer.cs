@@ -32,6 +32,8 @@ public class NetworkPlayer : NetworkBehaviour {
     beamInstance.transform.position = startPoint;
     beamInstance.transform.localScale = new Vector3(1, 1, 1);
 
+    beamInstance.GetComponent<Beam>().scale = 1;
+
     // Quaternion rotation = Quaternion.LookRotation(endPoint - startPoint);
 
     // beamInstance.transform.position = (startPoint + endPoint) * 0.5f;
