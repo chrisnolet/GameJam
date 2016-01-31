@@ -69,7 +69,7 @@ public class Gamepad : MonoBehaviour {
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();
     } else {
-      lineRenderer.SetPosition(1, handAnchor.forward * beamLength);
+      lineRenderer.SetPosition(1, handAnchor.position + handAnchor.forward * beamLength);
     }
   }
 }

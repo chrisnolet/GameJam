@@ -4440,11 +4440,6 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 485872, guid: f9224663992ec4aeea3ff0ab6b537a69, type: 2}
   m_PrefabInternal: {fileID: 947553786}
---- !u!224 &1069034594 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22442034, guid: ce816f2e6abb0504092c23ed9b970dfd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1276882998}
 --- !u!1 &1076856726
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,7 +4469,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352979820}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6689,6 +6684,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1131532641}
+  - {fileID: 1758538816}
   - {fileID: 1076856727}
   m_Father: {fileID: 1276882999}
   m_RootOrder: 0
@@ -9673,7 +9669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1758538816
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9685,7 +9681,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 71428389}
-  m_Father: {fileID: 1069034594}
+  m_Father: {fileID: 1352979820}
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
