@@ -4,7 +4,7 @@ public class Teleport : MonoBehaviour {
   public Color selectedColor;
   public Color inactiveColor;
 
-  private Renderer renderer;
+  private new Renderer renderer;
   private GameObject player;
 
   void OnEnable() {

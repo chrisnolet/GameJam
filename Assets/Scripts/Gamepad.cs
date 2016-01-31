@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 
-public class Gamepad : NetworkBehaviour {
+public class Gamepad : MonoBehaviour {
   public Transform handAnchor;
   public AudioClip gunshot;
   public GameObject beam;
@@ -12,6 +11,7 @@ public class Gamepad : NetworkBehaviour {
 
   private Movement movement;
   private AudioSource audioSource;
+  private NetworkPlayer networkPlayer;
 
   void Awake() {
     movement = GetComponent<Movement>();
@@ -86,13 +86,13 @@ public class Gamepad : NetworkBehaviour {
       endPoint = handAnchor.position + handAnchor.forward * beamLength;
     }
 
-    Cmd_CreateBeam(endPoint);
-  }
+    // Cache the network player script
+    if (networkPlayer == null) {
+      var player = GameObject.FindGameObjectWithTag("Player");
+      networkPlayer = player.GetComponentInChildren<NetworkPlayer>();
+    }
 
-  // [Command]
-  void Cmd_CreateBeam(Vector3 endPoint) {
-
-    // var beamInstance = Instantiate(beam);
+    // Create the beam instance
     var beamInstance = Instantiate(beam);
 
     beamInstance.transform.position = (handAnchor.position + endPoint) * 0.5f;
@@ -102,10 +102,8 @@ public class Gamepad : NetworkBehaviour {
     localScale.y = Vector3.Distance(handAnchor.position, endPoint);
     beamInstance.transform.localScale = localScale;
 
-    Object.Destroy(beamInstance, beamTime);
+    // Object.Destroy(beamInstance, beamTime);
 
-    var networkPlayer = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<NetworkPlayer>().gameObject;
-    Debug.Log(networkPlayer);
-    NetworkServer.SpawnWithClientAuthority(beamInstance, networkPlayer);
+    networkPlayer.CmdSpawnWithClientAuthority(beamInstance);
   }
 }
