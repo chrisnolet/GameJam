@@ -46,11 +46,13 @@ public class Gamepad : MonoBehaviour {
       movement.NextRing();
     }
 
-    if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger) || Input.GetKeyDown(KeyCode.D) {
+    if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)
+        || Input.GetKeyDown(KeyCode.D)) {
       movement.RightTeleport();
     }
 
-    if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)) || Input.GetKeyDown(KeyCode.A)) {
+    if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)
+      || Input.GetKeyDown(KeyCode.A)) {
       movement.LeftTeleport();
     }
   }
