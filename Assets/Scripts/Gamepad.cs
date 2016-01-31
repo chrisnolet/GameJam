@@ -62,24 +62,38 @@ public class Gamepad : MonoBehaviour {
     // Play sound effect
     audioSource.PlayOneShot(gunshot);
 
+    // TODO(CN): Consider removing
+    // var lineRenderer = Instantiate(beam).GetComponent<LineRenderer>();
+    // lineRenderer.SetPosition(0, handAnchor.position);
+    // lineRenderer.SetPosition(0, hit.point);
+
     // Show laser beam
-    var lineRenderer = Instantiate(beam).GetComponent<LineRenderer>();
-    lineRenderer.SetPosition(0, handAnchor.position);
-    Destroy(lineRenderer.gameObject, beamTime);
+    Vector3 endPoint;
 
     // Perform ray trace
     RaycastHit hit;
 
     if (Physics.Raycast(handAnchor.position, handAnchor.forward, out hit)) {
       var explosionInstance = Instantiate(explosion, hit.point, Quaternion.Euler(hit.normal));
-      Object.Destroy(explosionInstance, 1f);
+      endPoint = hit.point;
 
-      lineRenderer.SetPosition(1, hit.point);
+      Object.Destroy(explosionInstance, explosionTime);
 
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();
     } else {
-      lineRenderer.SetPosition(1, handAnchor.position + handAnchor.forward * beamLength);
+      endPoint = handAnchor.position + handAnchor.forward * beamLength;
     }
+
+    var beamInstance = Instantiate(beam);
+
+    beamInstance.transform.position = (handAnchor.position + endPoint) * 0.5f;
+    beamInstance.transform.rotation = handAnchor.transform.rotation * Quaternion.Euler(90, 0, 0);
+
+    Vector3 localScale = beamInstance.transform.localScale;
+    localScale.y = Vector3.Distance(handAnchor.position, endPoint);
+    beamInstance.transform.localScale = localScale;
+
+    Object.Destroy(beamInstance, beamTime);
   }
 }
