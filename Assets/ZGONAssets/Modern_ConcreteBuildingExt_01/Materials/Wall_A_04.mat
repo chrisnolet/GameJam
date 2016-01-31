@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Wall_A_04
+  m_Shader: {fileID: 4800000, guid: 2e3939409bcc09b4a8dd75f995d73a00, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: b0a0186890be9b647bd1a3623cbd86a4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: dd243bc6a69423d43a7d11b793882fe3, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpDetailTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 0ee54bfb117e190429f16c86efc6724a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BodyBumpTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 059293e71829e14418e15f8eb4e87a15, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BodyOcclusionTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 3c31572328406464d91f2a12236b13a6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpTrimTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 3027382d425264247ab0cdb02e5b3414, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DiffuseTrimTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 8b9c6572e515d9c41a7f5145dfeff254, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: 0.012692308
+      data:
+        first:
+          name: _TrimShininess
+        second: 0.113125004
+      data:
+        first:
+          name: _BodyOcclusionPower
+        second: 1
+      data:
+        first:
+          name: _BodyBumpPower
+        second: 3.0192308
+      data:
+        first:
+          name: _BumpPower
+        second: 1.1538461
+      data:
+        first:
+          name: _BumpDetailPower
+        second: 0.92307687
+      data:
+        first:
+          name: _DetailTexEnable
+        second: 0.9807692
+      data:
+        first:
+          name: _DetailTexOffset
+        second: 0.9423078
+      data:
+        first:
+          name: _DetailTexScale
+        second: 10
+      data:
+        first:
+          name: _DetailTexPower
+        second: 1.9807693
+      data:
+        first:
+          name: _AtlasOffsetX
+        second: 0
+      data:
+        first:
+          name: _AtlasOffsetY
+        second: 0.25
+      data:
+        first:
+          name: _AtlasScaleX
+        second: 0.25
+      data:
+        first:
+          name: _AtlasScaleY
+        second: 0.25
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 0.8134328, g: 0.8006977, b: 0.7223769, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _TrimColor
+        second: {r: 0.71107155, g: 0.8201182, b: 0.8358209, a: 1}
+      data:
+        first:
+          name: _VertexMaskColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _TrimSpecColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _MainSpecColor
+        second: {r: 0.13432837, g: 0.13432837, b: 0.13432837, a: 1}
+      data:
+        first:
+          name: _BodyOcclusionColor
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _DetailTexColor
+        second: {r: 0.6268657, g: 0.6268657, b: 0.6268657, a: 1}
+--- !u!1002 &2100001
+EditorExtensionImpl:
+  serializedVersion: 6
