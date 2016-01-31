@@ -6,7 +6,7 @@ public class TeleportEffects : MonoBehaviour {
 	public Image image;
 	bool fadeInProgress = false;
 	bool fadingOut = false;
-	float fadeSpeed = 0.025f;
+	float fadeSpeed = 0.2f;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +30,7 @@ public class TeleportEffects : MonoBehaviour {
 	private void fadeUpdate() {
 		if (fadeInProgress) {
 			if (fadingOut) {
+				print (image.color);
 				Color newColor = image.color;
 				newColor.a = newColor.a + fadeSpeed;
 				print (image.color);
