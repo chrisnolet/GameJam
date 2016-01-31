@@ -4,7 +4,21 @@ using UnityEngine.Networking;
 public class NetworkPlayer : NetworkBehaviour {
   public GameObject beam;
 
+  public override void OnStartServer() {
+    Debug.Log("OnStartServer");
+
+    base.OnStartServer();
+  }
+
+  public override void OnStartClient() {
+    Debug.Log("OnStartClient");
+
+    base.OnStartClient();
+  }
+
   public override void OnStartLocalPlayer() {
+    Debug.Log("OnStartLocalPlayer");
+
     base.OnStartLocalPlayer();
   }
 
@@ -26,24 +40,16 @@ public class NetworkPlayer : NetworkBehaviour {
   }
 
   [Command]
-  public void CmdCreateBeam(Vector3 startPoint, Vector3 endPoint) {
+  public void CmdCreateBeam(Vector3 startPoint, Vector3 endPoint, float beamTime) {
     var beamInstance = Instantiate(beam);
 
-    beamInstance.transform.position = startPoint;
-    beamInstance.transform.localScale = new Vector3(1, 1, 1);
+    Quaternion rotation = Quaternion.LookRotation(endPoint - startPoint);
 
-    beamInstance.GetComponent<Beam>().scale = 1;
+    beamInstance.transform.position = (startPoint + endPoint) * 0.5f;
+    beamInstance.transform.rotation = rotation * Quaternion.Euler(90, 0, 0);
+    beamInstance.GetComponent<Beam>().scale = Vector3.Distance(startPoint, endPoint);
 
-    // Quaternion rotation = Quaternion.LookRotation(endPoint - startPoint);
-
-    // beamInstance.transform.position = (startPoint + endPoint) * 0.5f;
-    // beamInstance.transform.rotation = rotation * Quaternion.Euler(90, 0, 0);
-
-    // Vector3 localScale = beamInstance.transform.localScale;
-    // localScale.y = Vector3.Distance(startPoint, endPoint);
-    // beamInstance.transform.localScale = localScale;
-
-    // Object.Destroy(beamInstance, beamTime);
+    Object.Destroy(beamInstance, beamTime);
 
     NetworkServer.SpawnWithClientAuthority(beamInstance, gameObject);
     // NetworkServer.Spawn(beamInstance);

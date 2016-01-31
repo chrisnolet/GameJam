@@ -4,9 +4,9 @@ public class Gamepad : MonoBehaviour {
   public Transform handAnchor;
   public AudioClip gunshot;
   public GameObject explosion;
-  public float beamTime = 0.25f;
-  public float beamLength = 20f;
   public float explosionTime = 1f;
+  public float beamLength = 20f;
+  public float beamTime = 0.25f;
 
   private Movement movement;
   private AudioSource audioSource;
@@ -101,6 +101,6 @@ public class Gamepad : MonoBehaviour {
       networkPlayer = player.GetComponentInChildren<NetworkPlayer>();
     }
 
-    networkPlayer.CmdCreateBeam(handAnchor.position, endPoint);
+    networkPlayer.CmdCreateBeam(handAnchor.position, endPoint, beamTime);
   }
 }
