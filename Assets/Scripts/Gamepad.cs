@@ -11,6 +11,7 @@ public class Gamepad : MonoBehaviour {
   private Movement movement;
   private AudioSource audioSource;
   private NetworkPlayer networkPlayer;
+  private bool castSuccess = false;
 
   void Awake() {
     movement = GetComponent<Movement>();
@@ -78,21 +79,19 @@ public class Gamepad : MonoBehaviour {
     // lineRenderer.SetPosition(0, hit.point);
 
     // Show laser beam
-    Vector3 endPoint;
+    Vector3 beamEndPoint;
 
     // Perform ray trace
     RaycastHit hit;
 
     if (Physics.Raycast(handAnchor.position, handAnchor.forward, out hit)) {
-      var explosionInstance = Instantiate(explosion, hit.point, Quaternion.Euler(hit.normal));
-      endPoint = hit.point;
-
-      Object.Destroy(explosionInstance, explosionTime);
+      beamEndPoint = hit.point;
+      castSuccess = true;
 
       // GameObject remotePlayer = hit.collider.GetComponent<RemotePlayer>();
       // remotePlayer.AddDamage();
     } else {
-      endPoint = handAnchor.position + handAnchor.forward * beamLength;
+      beamEndPoint = handAnchor.position + handAnchor.forward * beamLength;
     }
 
     // Cache the network player script
@@ -101,6 +100,12 @@ public class Gamepad : MonoBehaviour {
       networkPlayer = player.GetComponentInChildren<NetworkPlayer>();
     }
 
-    networkPlayer.CmdCreateBeam(handAnchor.position, endPoint, beamTime);
+    networkPlayer.CmdCreateBeam(handAnchor.position, beamEndPoint, beamTime);
+
+    if (castSuccess == true) {
+      networkPlayer.CmdCreateImpact (hit.point, hit.normal, explosionTime);
+    }
+
+    castSuccess = false; // reset for next fire attempt
   }
 }

@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 
 public class NetworkPlayer : NetworkBehaviour {
   public GameObject beam;
+  public GameObject impact;
 
   public override void OnStartServer() {
     Debug.Log("OnStartServer");
@@ -53,5 +54,12 @@ public class NetworkPlayer : NetworkBehaviour {
 
     NetworkServer.SpawnWithClientAuthority(beamInstance, gameObject);
     // NetworkServer.Spawn(beamInstance);
+  }
+
+  [Command]
+  public void CmdCreateImpact(Vector3 hit, Vector3 normal, float lifeTime) {
+    var impactInstance = (GameObject)Instantiate(impact, hit, Quaternion.Euler(normal));
+    Object.Destroy (impactInstance, lifeTime);
+    NetworkServer.Spawn(impactInstance);
   }
 }
