@@ -3,7 +3,6 @@
 public class Gamepad : MonoBehaviour {
   public Transform handAnchor;
   public AudioClip gunshot;
-  public GameObject beam;
   public GameObject explosion;
   public float beamTime = 0.25f;
   public float beamLength = 20f;
@@ -92,18 +91,6 @@ public class Gamepad : MonoBehaviour {
       networkPlayer = player.GetComponentInChildren<NetworkPlayer>();
     }
 
-    // Create the beam instance
-    var beamInstance = Instantiate(beam);
-
-    beamInstance.transform.position = (handAnchor.position + endPoint) * 0.5f;
-    beamInstance.transform.rotation = handAnchor.transform.rotation * Quaternion.Euler(90, 0, 0);
-
-    Vector3 localScale = beamInstance.transform.localScale;
-    localScale.y = Vector3.Distance(handAnchor.position, endPoint);
-    beamInstance.transform.localScale = localScale;
-
-    // Object.Destroy(beamInstance, beamTime);
-
-    networkPlayer.CmdSpawnWithClientAuthority(beamInstance);
+    networkPlayer.CmdCreateBeam(handAnchor.position, endPoint, handAnchor.rotation);
   }
 }

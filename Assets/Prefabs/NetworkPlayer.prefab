@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78aa5d143c4529546b3e8869939c6bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beam: {fileID: 164790, guid: 5b67edc79a15aba42b7c90d403cc1b95, type: 2}
 --- !u!114 &11432554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +169,10 @@ Prefab:
       propertyPath: m_LocalPlayerAuthority
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: beam
+      value: 
+      objectReference: {fileID: 164790, guid: 5b67edc79a15aba42b7c90d403cc1b95, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125172}
