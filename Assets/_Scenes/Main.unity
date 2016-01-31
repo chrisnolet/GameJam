@@ -4312,6 +4312,8 @@ Transform:
   - {fileID: 2127404092}
   - {fileID: 1619197833}
   - {fileID: 200430341}
+  - {fileID: 1639228018}
+  - {fileID: 2021226449}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1 &1030572294
@@ -5547,7 +5549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 507635263}
-  teleports: []
+  rings:
+  - {fileID: 1639228017}
+  - {fileID: 2021226448}
 --- !u!114 &1184557611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8512,6 +8516,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634187594}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1639228017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1639228018}
+  m_Layer: 0
+  m_Name: RingOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1639228018
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1639228017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1001325988}
+  m_RootOrder: 9
 --- !u!1 &1639759898
 GameObject:
   m_ObjectHideFlags: 0
@@ -11530,6 +11561,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9224663992ec4aeea3ff0ab6b537a69, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2021226448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2021226449}
+  m_Layer: 0
+  m_Name: RingTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021226449
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2021226448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1001325988}
+  m_RootOrder: 10
 --- !u!1 &2047354235
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,6 +37,14 @@ public class Gamepad : MonoBehaviour {
     if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
       movement.HideTeleports();
     }
+    
+    if (Input.GetKeyDown (KeyCode.P)) {
+      movement.PreviousRing();
+    }
+
+    if (Input.GetKeyDown (KeyCode.N)) {
+      movement.NextRing();
+    }
 
     if (Input.GetKeyDown (KeyCode.R)) {
       movement.PreviousTeleport();
