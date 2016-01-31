@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour {
   // Use this for initialization
   void Start() {
     HideTeleports();
- 
+
     // Set the initial teleport array for the ring where the player starts.
 	SetTeleportsForRing();
   }
