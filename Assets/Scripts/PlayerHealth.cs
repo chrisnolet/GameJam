@@ -25,10 +25,49 @@ public class PlayerHealth : MonoBehaviour {
 		currentHealth = maxHealth;
 		InvokeRepeating ("regenerateOrBleed", 1f, 1f);
 	}
-	
+
+	//Fade stuff
+	void fadeInOut() {	
+		if (fadeActive) {
+			return;
+		}
+		print ("fade in activated");
+		fadeActive = true;
+		fading = true;
+	}
+
+	bool fadeActive = false;
+	bool fading = false;
+	float fadeSpeed = 0.025f;
+
+	private void fadeUpdate() {
+		if (fadeActive) {
+			if (fading) {
+				Color newColor = image.color;
+				newColor.a = newColor.a + fadeSpeed;
+				print (image.color);
+				if (newColor.a >= 1) {
+					fading = false;
+					print ("started fading in");
+				} else {
+					image.color = newColor;
+				}
+			} else {
+				Color newColor = image.color;
+				newColor.a = newColor.a - fadeSpeed;
+				if (newColor.a <= 0) {
+					fadeActive = false;
+					print ("stopped fading in");
+				} else {
+					image.color = newColor;
+				}
+			}
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-		
+		fadeUpdate ();
 	}
 
 	// Call this when someone gets hit
@@ -55,7 +94,7 @@ public class PlayerHealth : MonoBehaviour {
 		if (currentHealth == maxHealth) {
 			return;
 		}
-		
+		fadeInOut ();
 		if (currentHealth < bleedingStartHealth) {
 			//Lose hp if person is dying
 			reduceHealth(healthDecreasePerSecondWhenBleeding);
