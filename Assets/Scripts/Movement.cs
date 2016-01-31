@@ -26,8 +26,9 @@ public class Movement : MonoBehaviour {
   void Start() {
     HideTeleports();
 
+    // TODO: Set ringIndex to the ring players start in.
     // Set the initial teleport array for the ring where the player starts.
-	SetTeleportsForRing();
+    SetTeleportsForRing();
   }
 
   // Update is called once per frame
@@ -50,7 +51,7 @@ public class Movement : MonoBehaviour {
   }
 
   public void SetTeleportsForRing() {
-	teleports = rings[ringIndex].GetComponentsInChildren<Teleport>();
+    teleports = rings[ringIndex].GetComponentsInChildren<Teleport>();
   }
 
   public void NextRing() {
@@ -58,9 +59,9 @@ public class Movement : MonoBehaviour {
     ringIndex %= rings.Length;
 
     // Update teleports for new Ring.
-	SetTeleportsForRing ();
-	// Teleport player to same index one ring forward.
-	// WARNING: THIS ONLY WORKS IF ALL THE RINGS HAVE THE SAME NUMBER OF TELEPORTS
+    SetTeleportsForRing ();
+    // Teleport player to same index one ring forward.
+    // WARNING: THIS ONLY WORKS IF ALL THE RINGS HAVE THE SAME NUMBER OF TELEPORTS
     player.position = teleports[teleportIndex].transform.position;
   }
 
@@ -72,20 +73,20 @@ public class Movement : MonoBehaviour {
     }
 
     // Update teleports for new Ring.
-	SetTeleportsForRing ();
-	// Teleport player to same index one ring forward.
-	// WARNING: THIS ONLY WORKS IF ALL THE RINGS HAVE THE SAME NUMBER OF TELEPORTS
+    SetTeleportsForRing ();
+    // Teleport player to same index one ring forward.
+    // WARNING: THIS ONLY WORKS IF ALL THE RINGS HAVE THE SAME NUMBER OF TELEPORTS
     player.position = teleports[teleportIndex].transform.position;
   }
 
-  public void NextTeleport() {
+  public void RightTeleport() {
     teleportIndex++;
     teleportIndex %= teleports.Length;
 
     player.position = teleports[teleportIndex].transform.position;
   }
 
-  public void PreviousTeleport() {
+  public void LeftTeleport() {
     teleportIndex--;
 
     if (teleportIndex < 0) {
