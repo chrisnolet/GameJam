@@ -1,7 +1,5 @@
 *.sublime-workspace
-loo.exe
-loo_Data/
-player_win_x86*
+*.pdb
 
 # https://github.com/github/gitignore/blob/master/Unity.gitignore
 

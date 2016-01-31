@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class Gamepad : MonoBehaviour {
+public class Gamepad : NetworkBehaviour {
   public Transform handAnchor;
   public AudioClip gunshot;
   public GameObject beam;
@@ -85,6 +86,13 @@ public class Gamepad : MonoBehaviour {
       endPoint = handAnchor.position + handAnchor.forward * beamLength;
     }
 
+    Cmd_CreateBeam(endPoint);
+  }
+
+  // [Command]
+  void Cmd_CreateBeam(Vector3 endPoint) {
+
+    // var beamInstance = Instantiate(beam);
     var beamInstance = Instantiate(beam);
 
     beamInstance.transform.position = (handAnchor.position + endPoint) * 0.5f;
@@ -95,5 +103,9 @@ public class Gamepad : MonoBehaviour {
     beamInstance.transform.localScale = localScale;
 
     Object.Destroy(beamInstance, beamTime);
+
+    var networkPlayer = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<NetworkPlayer>().gameObject;
+    Debug.Log(networkPlayer);
+    NetworkServer.SpawnWithClientAuthority(beamInstance, networkPlayer);
   }
 }
