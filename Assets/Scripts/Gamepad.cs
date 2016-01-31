@@ -31,32 +31,39 @@ public class Gamepad : MonoBehaviour {
       FirePrimary();
     }
 
-    if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown("Fire1")) {
-      movement.ShowTeleports();
-    }
+    // if (OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown("Fire1")) {
+    //   movement.ShowTeleports();
+    // }
 
-    if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
-      movement.HideTeleports();
-    }
+    // if (OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp("Fire1")) {
+    //   movement.HideTeleports();
+    // }
 
-    if (OVRInput.GetUp(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.S)) {
+    if (OVRInput.GetDown(OVRInput.Button.Two) || Input.GetKeyDown(KeyCode.S)) {
+      print("ssss");
 	  executeTeleportEffects ();
       movement.PreviousRing();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.Four) || Input.GetKeyDown(KeyCode.W)) {
+            print("wwww");
+
 	  executeTeleportEffects ();
       movement.NextRing();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger)
         || Input.GetKeyDown(KeyCode.D)) {
+                  print("dddd");
+
 	  executeTeleportEffects ();
       movement.RightTeleport();
     }
 
     if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger)
       || Input.GetKeyDown(KeyCode.A)) {
+                  print("aaaa");
+
 	  executeTeleportEffects ();
       movement.LeftTeleport();
     }

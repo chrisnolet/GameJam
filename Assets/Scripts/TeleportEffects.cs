@@ -12,19 +12,19 @@ public class TeleportEffects : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		fadeUpdate ();
 	}
 
-	public void fadeInOut() {	
+	public void fadeInOut() {
 		if (fadeInProgress) {
 			return;
 		}
-		print ("fade out activated");
+		// print ("fade out activated");
 		fadeInProgress = true;
 		fadingOut = true;
 		audioSource.PlayOneShot (sound);
@@ -33,13 +33,13 @@ public class TeleportEffects : MonoBehaviour {
 	private void fadeUpdate() {
 		if (fadeInProgress) {
 			if (fadingOut) {
-				print (image.color);
+				// print (image.color);
 				Color newColor = image.color;
 				newColor.a = newColor.a + fadeSpeed;
-				print (image.color);
+				// print (image.color);
 				if (newColor.a >= 1) {
 					fadingOut = false;
-					print ("started fading out");
+					// print ("started fading out");
 				} else {
 					image.color = newColor;
 				}
@@ -48,7 +48,7 @@ public class TeleportEffects : MonoBehaviour {
 				newColor.a = newColor.a - fadeSpeed;
 				if (newColor.a <= 0) {
 					fadeInProgress = false;
-					print ("stopped fading in");
+					// print ("stopped fading in");
 				} else {
 					image.color = newColor;
 				}
