@@ -3,17 +3,13 @@ Peanut Butter and Game Jam
 
 Developed by Team Awesome (c) 2016
 
-- [x] Xbox controls
-- [x] VR reticle/targeting
-- [x] Shooting
-- [x] Damage
-- [x] Enemy HP
-- [ ] Teleportation
-- [ ] Sounds
-- [ ] Arena
-- [ ] Scoreboard
-- [ ] Respawn
-- [ ] AddDamage
+This app was developed in 48 hours as part of the Global Game Jam 2016, at Facebook HQ.
+
+
+Videos
+---
+
+You can see a clip of the final product here: https://www.youtube.com/watch?v=3Vzq7rwehf0
 
 
 Important Notices
