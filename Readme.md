@@ -1,7 +1,5 @@
-Peanut Butter and Game Jam
+Game Jam
 ===
-
-Developed by Team Awesome (c) 2016
 
 This app was developed in 48 hours as part of the Global Game Jam 2016, at Facebook HQ.
 
@@ -9,7 +7,7 @@ This app was developed in 48 hours as part of the Global Game Jam 2016, at Faceb
 Videos
 ---
 
-You can see a clip of the final product here: https://www.youtube.com/watch?v=3Vzq7rwehf0
+You can see a clip of the final product here: https://youtu.be/RoekCVf8Fzw
 
 
 Important Notices
